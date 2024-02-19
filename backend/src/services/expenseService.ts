@@ -1,7 +1,7 @@
-import { GroupService } from "./groupService";
-import { calculateSettlements } from "../utils/settlements";
-import { Expense, Settlement } from "../type";
 import { ExpenseRepository } from "../repositories/expenseRepository";
+import { Expense, Settlement } from "../type";
+import { calculateSettlements } from "../utils/settlements";
+import { GroupService } from "./groupService";
 
 export class ExpenseService {
   constructor(
@@ -9,6 +9,7 @@ export class ExpenseService {
     private groupService: GroupService
   ) {}
 
+  // 清算リストの取得
   getSettlements = (groupName: string): Settlement[] => {
     const group = this.groupService.getGroupByName(groupName);
     if (!group) {
@@ -21,6 +22,7 @@ export class ExpenseService {
     return calculateSettlements(expenses, group.members);
   };
 
+  // 支出の登録
   addExpense = (expense: Expense): void => {
     const group = this.groupService.getGroupByName(expense.groupName);
     if (!group) {
