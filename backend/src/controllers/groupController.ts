@@ -1,12 +1,14 @@
 import express from "express";
-import { GroupService } from "../services/groupService";
 import { ZodError } from "zod";
-import { Group } from "../type";
+
 import { groupSchema } from "../schema/group";
+import { GroupService } from "../services/groupService";
+import { Group } from "../type";
 
 export class GroupController {
   constructor(private groupService: GroupService) {}
 
+  // グループ一覧の取得
   getGroupList = (
     req: express.Request,
     res: express.Response,
@@ -20,6 +22,7 @@ export class GroupController {
     }
   };
 
+  // グループ名を指定しグループを取得する
   getGroupByName = (
     req: express.Request,
     res: express.Response,
@@ -34,8 +37,9 @@ export class GroupController {
     } catch (e) {
       next(e);
     }
-  }
+  };
 
+  // グループを追加する
   addGroup = (
     req: express.Request,
     res: express.Response,
@@ -60,5 +64,5 @@ export class GroupController {
       }
       next(e);
     }
-  }
+  };
 }
