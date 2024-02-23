@@ -1,15 +1,16 @@
-import express from "express";
 import cors from "cors";
-import { GroupService } from "./services/groupService";
-import { GroupController } from "./controllers/groupController";
-import { GroupRepository } from "./repositories/groupRepository";
-import { groupRoutes } from "./routes/groupRoute";
-import { ExpenseRepository } from "./repositories/expenseRepository";
-import { ExpenseService } from "./services/expenseService";
+import express from "express";
+
 import { ExpenseController } from "./controllers/expenseController";
-import { expenseRoutes } from "./routes/expenseRoute";
-import { testRoutes } from "./routes/testRoute";
+import { GroupController } from "./controllers/groupController";
 import { TestController } from "./controllers/testController";
+import { ExpenseRepository } from "./repositories/expenseRepository";
+import { GroupRepository } from "./repositories/groupRepository";
+import { expenseRoutes } from "./routes/expenseRoute";
+import { groupRoutes } from "./routes/groupRoute";
+import { testRoutes } from "./routes/testRoute";
+import { ExpenseService } from "./services/expenseService";
+import { GroupService } from "./services/groupService";
 
 export function createApp(
   groupDataPath: string,
@@ -19,7 +20,7 @@ export function createApp(
   app.use(express.json());
 
   const options: cors.CorsOptions = {
-    origin: ["http://localhost:3001"],
+    origin: ["http://localhost:3001", "http://127.0.0.1:3001"],
   };
   app.use(cors(options));
 
