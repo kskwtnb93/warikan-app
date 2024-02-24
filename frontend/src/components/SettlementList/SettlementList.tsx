@@ -1,11 +1,12 @@
 import {
-  UnorderedList,
+  Box,
+  HStack,
   ListItem,
   Text,
+  UnorderedList,
   VStack,
-  HStack,
-  Box,
 } from "@chakra-ui/react";
+
 import { Settlement } from "../../type";
 
 interface SettlementListProps {
